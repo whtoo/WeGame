@@ -16,6 +16,10 @@
         </script>
         <script id="shader-vs" type="x-shader/x-vertex">
             attribute vec2 aVertexPosition;
+            
+            uniform mat4 mvMatrix;
+            uniform mat4 pMatrix;
+            
             void main(void) {
             gl_Position = vec4(aVertexPosition, 0.0, 1.0);
             }
@@ -46,16 +50,6 @@
                 }
 
                 return shaderSource;
-            }
-            function getVertexShader() {
-                var shaderNode = document.getElementById("shader-vs");
-                var shaderSource = getShaderSource(shaderNode);
-
-                var shader = gl.createShader(gl.VERTEX_SHADER);
-                gl.shaderSource(shader, shaderSource);
-                gl.compileShader(shader);
-
-                return shader;
             }
             function getShader(gl,type){
                 var shaderNode = document.getElementById(type);
